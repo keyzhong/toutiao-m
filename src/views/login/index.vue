@@ -103,6 +103,7 @@ export default {
         // Toast.success('登录成功')
         this.$toast.success('登录成功')
         this.$router.push('/home')
+        this.$store.commit('setUser', { name: 'key', age: 20 }) // 将用户信息存到vuex中
       } catch (err) {
         this.$toast.success('登录失败')
         // Toast.fail('登录失败')
