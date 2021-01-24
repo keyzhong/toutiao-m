@@ -1,0 +1,28 @@
+<template>
+  <div>qa</div>
+</template>
+
+<script type="text/ecmascript-6">
+export default {
+  data () {
+    return {
+
+    }
+  },
+  props: {
+
+  },
+  methods: {
+
+  },
+  computed: {
+
+  },
+  components: {
+
+  }
+}
+</script>
+
+<style>
+</style>
