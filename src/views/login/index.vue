@@ -102,10 +102,12 @@ export default {
         console.log(res)
         // Toast.success('登录成功')
         this.$toast.success('登录成功')
-        this.$router.push('/home')
+        this.$router.push('/')
         this.$store.commit('setUser', { name: 'key', age: 20 }) // 将用户信息存到vuex中
       } catch (err) {
         this.$toast.success('登录失败')
+        this.$router.push('/')
+        this.$store.commit('setUser', { name: 'key', age: 20 }) // 将用户信息存到vuex中
         // Toast.fail('登录失败')
       }
     },
@@ -164,7 +166,5 @@ export default {
       font-size: 15px;
     }
   }
-}
-.van-field__body {
 }
 </style>
