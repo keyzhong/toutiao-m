@@ -8,8 +8,8 @@
           slot='icon'
           fit='cover'
           round
-          src="https://img.yzcdn.cn/vant/cat.jpeg" />
-        <div slot='title' class='name'>key3</div>
+          :src="currentUser.photo" />
+        <div slot='title' class='name'>{{currentUser.name}}</div>
         <van-button size='small' round class='update-btn'>编辑资料</van-button>
       </van-cell>
       <van-grid
@@ -54,23 +54,28 @@
       <van-grid-item icon="clock-o" text="历史" />
     </van-grid>
       <!-- is-link右侧箭头 -->
-      <van-cell title='消息通知' is-link url='baidu.com'/>
-      <van-cell  class="mb-4" title='小爱同学' to='baidu.com'/>
-      <van-cell
-        v-if='user'
-        title='退出登录'
-        class='logout-btn'
-        @click='onLogout'
-        />
+    <van-cell title='消息通知' is-link url='baidu.com'/>
+    <van-cell  class="mb-4" title='小爱同学' to='baidu.com'/>
+    <van-cell
+      v-if='user'
+      title='退出登录'
+      class='logout-btn'
+      @click='onLogout'
+      />
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import { mapState } from 'vuex'
+import { getUserInfo } from '@/api/user.js'
 export default {
   name: 'MyIndex',
   data () {
     return {
+      currentUser: {
+        name: 'key3',
+        photo: 'https://img.yzcdn.cn/vant/cat.jpeg'
+      }
     }
   },
   props: {
@@ -87,6 +92,11 @@ export default {
         // user变化 视图变化 响应式
         this.$store.commit('setUser', null)
       })
+    },
+    async onGetUserInfo () {
+      const { data } = await getUserInfo()
+      console.log(data)
+      // this.currentUser = data.data
     }
   },
   computed: {
@@ -94,6 +104,9 @@ export default {
   },
   components: {
 
+  },
+  created () {
+    this.onGetUserInfo()
   }
 }
 </script>
