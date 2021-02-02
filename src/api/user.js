@@ -43,3 +43,35 @@ export const getUserChannelArtiles = params => {
     params
   })
 }
+
+/**
+ * 获取所有频道
+ */
+export const getAllChannels = params => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/channels',
+    params
+  })
+}
+
+/**
+ * 修改用户频道列表
+ */
+export const changeUserChannels = params => {
+  return request({
+    method: 'PATCH',
+    url: '/app/v1_0/user/channels',
+    params
+  })
+}
+
+/**
+ * 批量修改用户频道列表
+ */
+export const deleteUserChannels = id => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/user/channels/${id}`
+  })
+}

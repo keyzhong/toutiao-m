@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import vant from 'vant'
+import vant, { Lazyload } from 'vant'
+
 // import '@/mock/mock.js'
 import '@/utils/dayjs'
 
@@ -11,9 +12,13 @@ import 'amfe-flexible'
 
 import '@/styles/index.less'
 
+import safeGet from '@/utils/getDataNoBug'
+Vue.use(safeGet)
+
 Vue.config.productionTip = false
 
 Vue.use(vant)
+Vue.use(Lazyload)
 
 new Vue({
   router,

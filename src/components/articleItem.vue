@@ -11,6 +11,8 @@
           :key = 'index'
           class='right-cover'
           fit='cover'
+          @click='imagePreview(item.cover.images)'
+          :data='val'
           :src='val'>
         </van-image>
       </div>
@@ -30,6 +32,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { ImagePreview } from 'vant'
 export default {
   name: 'ArticleItem',
   data () {
@@ -44,7 +47,13 @@ export default {
     }
   },
   methods: {
-
+    imagePreview (val) {
+      ImagePreview({
+        images: [...val],
+        closeable: true,
+        loop: false
+      })
+    }
   },
   computed: {
 

@@ -24,21 +24,46 @@
         <article-list :channel='item'>
         </article-list>
       </van-tab>
+      <!-- 占位元素 -->
+      <div slot='nav-right' class='block'></div>
+      <div slot='nav-right' class='more-channels'>
+        <van-icon  name="wap-nav" @click='showChannelList' />
+      </div>
     </van-tabs>
     <!-- 标签导航 -->
     <!-- 文章列表 -->
     <!-- 文章列表 -->
+    <!--弹出层-->
+    <van-popup
+    position="bottom"
+    class='channel-edit'
+    get-container="body"
+    closeable
+    round
+    close-icon-position="top-left"
+    :style='{height:"100%", top: "50px"}'
+    v-model="showPopup">
+      <channel-edit
+        :activeIndex='active'
+        :myChannelList='channelsList'
+        @close = 'closePopup'
+        @switchChannel='changeChannel'></channel-edit>
+    </van-popup>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import { getUserChannels } from '@/api/user.js'
+import { getItem } from '@/utils/storage.js'
+import { mapState } from 'vuex'
 import ArticleList from './components/articleList'
+import ChannelEdit from './components/channelEdit'
 export default {
   data () {
     return {
       active: 0,
-      channelsList: []
+      channelsList: [],
+      showPopup: false
     }
   },
   props: {
@@ -52,18 +77,36 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    // 展示弹出层
+    showChannelList () {
+      this.showPopup = true
+    },
+    changeChannel (index) {
+      this.active = index
+    },
+    closePopup () {
+      this.showPopup = false
     }
   },
   computed: {
+    ...mapState(['user']),
     channelsListLength () {
       return this.channelsList.length
     }
   },
   components: {
-    ArticleList
+    ArticleList,
+    ChannelEdit
   },
   created () {
-    this.loadChannelList()
+    const myChannels = getItem('myChannels')
+    if (this.user) { // 已登录
+    } else if (myChannels.length) { // 未登陆 本地有
+      this.channelsList = myChannels
+    } else { // 未登录 本地无
+      this.loadChannelList()
+    }
   }
 }
 </script>
@@ -86,6 +129,7 @@ export default {
     }
   }
   .channel-tabs{
+    position: relative;
     /deep/ .van-tab{
       border-right:1px solid #eee;
       border-bottom:1px solid #eee;
@@ -96,8 +140,33 @@ export default {
       background: #3296fa;
       bottom:20px;
     }
-    .tab-item{
+    .block{
+      flex-shrink: 0;
+      width: 33px;
+    }
+    .more-channels{
+      position: fixed;
+      top:46px;
+      right: 0;
+      font-size: 24px;
+      height: 43px;
+      background: rgba(255,255,255,.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .van-icon{
+        font-size: 24px;
+      }
+      &::before{
 
+        position: absolute;
+        top:7px;
+        left:-5px;
+        content: '';
+        width: 1px;
+        height: 29px;
+        background: #ccc;
+      }
     }
   }
 }

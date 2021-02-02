@@ -7,19 +7,21 @@
       @click-left="$router.back()"
     />
     <div class="input-container">
-      <van-form @submit='loginFn'
-        ref = 'loginForm'
-        @failed='failedFn'
+      <van-form
+        @submit="loginFn"
+        ref="loginForm"
+        @failed="failedFn"
         validate-first
-        :show-error='false'
-        :show-error-message='false'>
+        :show-error="false"
+        :show-error-message="false"
+      >
         <van-field
           v-model="user.mobile"
           label=""
           clearable
           left-icon="phone"
           placeholder="请输入手机号"
-          name='mobile'
+          name="mobile"
           :rules="formRules.mobile"
         />
         <van-field
@@ -29,29 +31,30 @@
           left-icon="lock"
           placeholder="请输入短信验证码"
           :rules="formRules.code"
-          name='code'
+          name="code"
         >
           <!-- 这里给发送验证码的按钮加上prevent修饰符 否则按钮点击会触发form的submit事件 -->
           <template #button>
             <van-count-down
               :time="time"
               format="ss 秒"
-              v-if = 'isShowCount'
-              @finish='isShowCount = false'/>
+              v-if="isShowCount"
+              @finish="isShowCount = false"
+            />
             <van-button
-            v-else
-            :loading='isSendCodeLoading'
-            size="small"
-            type="default"
-            round
-            @click.prevent="sendCode"
-            >获取验证码</van-button
+              v-else
+              :loading="isSendCodeLoading"
+              size="small"
+              type="default"
+              round
+              @click.prevent="sendCode"
+              >获取验证码</van-button
             >
           </template>
         </van-field>
         <div class="login-btn-wrapper">
-        <van-button type="info" block class="login-btn" >登录</van-button>
-      </div>
+          <van-button type="info" block class="login-btn">登录</van-button>
+        </div>
       </van-form>
     </div>
   </div>
@@ -148,10 +151,17 @@ export default {
     }
   },
   computed: {
-
+    /* applyUserText: function () {
+      const userName = this.$safeGet(this, 'entity.expenseApply.applyUser.name') || ''
+      const officeName = this.$safeGet(this, 'entity.expenseApply.applyOffice.officeName') || ''
+      return `${userName}(${officeName})`
+    } */
   },
   components: {
 
+  },
+  created () {
+    // this.$set('userName', this.entity.expenseApply.applyUser.name)
   }
 }
 </script>
