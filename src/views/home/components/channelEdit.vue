@@ -26,7 +26,7 @@
     <van-grid :gutter="10" class="channel-wrap">
       <van-grid-item
         class="channel-item"
-        v-for="value in allChannelsList"
+        v-for="value in recommendChannels"
         :key="value.id"
         :text="value.name"
         @click="addChannel(value)"
@@ -65,7 +65,6 @@ export default {
       // 所有channel 减去 我的channel 等于 推荐
     },
     async addChannel (val) {
-      this.myChannelList.push(val)
       // 数据需要持久化
       if (this.user) {
         await changeUserChannels({
@@ -79,6 +78,7 @@ export default {
       } else {
         setItem('myChannels', this.myChannelList)
       }
+      this.myChannelList.push(val)
     },
     editChannel () {
       this.isEdit = !this.isEdit

@@ -75,3 +75,36 @@ export const deleteUserChannels = id => {
     url: `/app/v1_0/user/channels/${id}`
   })
 }
+
+/**
+ * 文章联想建议
+ */
+export const getSuggestions = params => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/suggestion',
+    params
+  })
+}
+
+/**
+ * 搜索文章联想建议
+ */
+export const getSearchResults = params => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/search',
+    params
+  })
+}
+
+/**
+ * 获取用户搜索历史
+ */
+export const getUserSearchHistories = params => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/search/histories',
+    params
+  })
+}

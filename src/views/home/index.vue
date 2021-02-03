@@ -7,6 +7,7 @@
             type='info'
             round
             class="search-btn"
+            to='/search'
             icon='search'>搜索</van-button>
         </template>
       </van-nav-bar>
@@ -100,7 +101,7 @@ export default {
     ChannelEdit
   },
   created () {
-    const myChannels = getItem('myChannels')
+    const myChannels = getItem('myChannels') || []
     if (this.user) { // 已登录
     } else if (myChannels.length) { // 未登陆 本地有
       this.channelsList = myChannels
