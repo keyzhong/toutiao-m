@@ -1,17 +1,17 @@
 <template>
-  <van-cell class='article-item'>
+  <van-cell class='article-item' :to='{name: "articleDetail", params: {id: item.art_id}}'>
     <div slot='title'
       class='title van-multi-ellipsis--l3'>
       {{item.title}}
     </div>
     <div slot='label'>
       <div v-if = 'item.cover.type === 3' class='cover-wrap'>
+        <!--  @click='imagePreview(item.cover.images)' -->
         <van-image
           v-for='(val, index) in item.cover.images'
           :key = 'index'
           class='right-cover'
           fit='cover'
-          @click='imagePreview(item.cover.images)'
           :data='val'
           :src='val'>
         </van-image>
@@ -32,7 +32,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { ImagePreview } from 'vant'
+// import { ImagePreview } from 'vant'
 export default {
   name: 'ArticleItem',
   data () {
@@ -47,13 +47,13 @@ export default {
     }
   },
   methods: {
-    imagePreview (val) {
+    /* imagePreview (val) {
       ImagePreview({
         images: [...val],
         closeable: true,
         loop: false
       })
-    }
+    } */
   },
   computed: {
 

@@ -15,7 +15,7 @@
         finished-text="没有更多了"
         @load="onLoad"
       >
-        <article-item v-for="item in list" :key="item.art_id" :item="item">
+        <article-item v-for="(item, index) in list" :key="index" :item="item">
         </article-item>
       </van-list>
     </van-pull-refresh>

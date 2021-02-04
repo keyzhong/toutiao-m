@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vant, { Lazyload } from 'vant'
-
 // import '@/mock/mock.js'
 import '@/utils/dayjs'
 

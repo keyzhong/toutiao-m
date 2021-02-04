@@ -43,6 +43,7 @@ export default {
       if (this.isDelete) {
         this.searchHistoryList.splice(index, 1)
       } else {
+        console.log('item', item)
         this.$emit('searchHistoryFn', item)
       }
     }

@@ -25,7 +25,7 @@
     <!-- 联想建议 -->
 
     <!-- 历史记录 -->
-<!--     这里的$event就是传过来的值-->
+<!--     这里的$event就是传过来的值 []-->
     <search-history
       v-else
        @searchHistoryFn="onSearch"

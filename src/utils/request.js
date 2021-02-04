@@ -1,12 +1,21 @@
 import axios from 'axios'
 import store from '@/store/'
+import JSONBig from 'json-bigint'
 const request = axios.create({
   // baseURL: '/api', // 基础路径
   // baseURL: ' https://toutiao.m.lipengzhou.com/api/',
   baseURL: 'http://ttapi.research.itcast.cn/',
   headers: {
     Authorization: ''
-  }
+  },
+  // 返回数据之前先处理
+  transformResponse: [function (data) {
+    try {
+      return JSONBig.parse(data)
+    } catch {
+      return data
+    }
+  }]
 })
 
 // 请求拦截器

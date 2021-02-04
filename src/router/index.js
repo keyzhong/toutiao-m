@@ -11,7 +11,7 @@ const routes = [
   },
   {
     path: '/',
-    name: 'layout',
+    name: '',
     component: () => import('@/views/layout'),
     children: [
       {
@@ -40,6 +40,12 @@ const routes = [
     path: '/search',
     name: 'search',
     component: () => import('@/views/search')
+  },
+  {
+    path: '/articleDetail/:id',
+    name: 'articleDetail',
+    component: () => import('@/views/articleDetail'),
+    props: true
   }
 ]
 

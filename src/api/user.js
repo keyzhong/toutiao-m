@@ -108,3 +108,34 @@ export const getUserSearchHistories = params => {
     params
   })
 }
+
+/**
+ * 获取文章详情
+ */
+export const getArticleDetail = id => {
+  return request({
+    method: 'GET',
+    url: `/app/v1_0/articles/${id}`
+  })
+}
+
+/**
+ * 关注用户
+ */
+export const followUser = parmas => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/user/followings',
+    parmas
+  })
+}
+
+/**
+ * 取消关注
+ */
+export const cancelFollowUser = id => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/followings/${id}`
+  })
+}
