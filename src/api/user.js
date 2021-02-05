@@ -139,3 +139,24 @@ export const cancelFollowUser = id => {
     url: `/app/v1_0/followings/${id}`
   })
 }
+
+/**
+ * 获取文章评论
+ */
+export const getComments = parmas => {
+  return request({
+    method: 'GET',
+    url: `/app/v1_0/comments?type=${parmas.type}&source=${parmas.source}&limit=${parmas.limit}`
+  })
+}
+
+/**
+ * 添加评论或者评论回复
+ */
+export const addComments = parmas => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/comments',
+    parmas
+  })
+}
