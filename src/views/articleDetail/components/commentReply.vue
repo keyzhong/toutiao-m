@@ -16,7 +16,7 @@
     ></comment-list>
 
     <van-tabbar route center class="footer">
-      <van-button block round size="small">评论</van-button>
+      <van-button block round size="small" @click='commentPlain=true'>评论</van-button>
     </van-tabbar>
 
     <!-- 发布评论 -->

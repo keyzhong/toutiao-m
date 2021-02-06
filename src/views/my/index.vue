@@ -55,7 +55,7 @@
     </van-grid>
       <!-- is-link右侧箭头 -->
     <van-cell title='消息通知' is-link url='baidu.com'/>
-    <van-cell  class="mb-4" title='小爱同学' to='baidu.com'/>
+    <van-cell  class="mb-4" title='小爱同学' to='/chat'/>
     <van-cell
       v-if='user'
       title='退出登录'

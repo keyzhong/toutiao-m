@@ -6,8 +6,7 @@ const request = axios.create({
   // baseURL: ' https://toutiao.m.lipengzhou.com/api/',
   baseURL: 'http://ttapi.research.itcast.cn/',
   headers: {
-    Authorization:
-      'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTI1OTcxNzcsInVzZXJfaWQiOjEzNTc5MjY5MDM3ODgzMzkyMDAsInJlZnJlc2giOmZhbHNlfQ.Ikxn7UpCRXvr_YzTHrL5F137wVidD0j1asM6JWh_9m4'
+    Authorization: ''
   },
   // 返回数据之前先处理
   transformResponse: [
@@ -26,8 +25,7 @@ request.interceptors.request.use(
   config => {
     const { user } = store.state
     if (user) {
-      config.headers.Authorization =
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTI1OTcxNzcsInVzZXJfaWQiOjEzNTc5MjY5MDM3ODgzMzkyMDAsInJlZnJlc2giOmZhbHNlfQ.Ikxn7UpCRXvr_YzTHrL5F137wVidD0j1asM6JWh_9m4'
+      config.headers.Authorization = ''
     }
     return config
   },

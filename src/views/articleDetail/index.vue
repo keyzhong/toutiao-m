@@ -86,7 +86,7 @@
     >
       <comment-reply
         :item="item"
-        :articleId='id'
+        :id='id'
         v-if="replyCommentPlain"
         @replay-click="onReplyClick"
         @close-reply="replyCommentPlain = false"

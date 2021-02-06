@@ -15,7 +15,7 @@
           :src="item.aut_photo"
         ></van-image>
         <div slot='label' class='label-wrap'>
-          <div>{{item.pubdate | datetime('MM:DD HH:mm')}}</div>
+          <div>{{item.pubdate | datetime('MM-DD HH:mm')}}</div>
           <van-button size='mini' round @click="$emit('replay-click', item)">回复 {{item.reply_count}}</van-button>
         </div>
         <div class='right' @click='onLike'>

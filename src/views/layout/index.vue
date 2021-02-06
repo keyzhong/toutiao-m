@@ -9,7 +9,9 @@
       @click-right="onClickRight"
     /> -->
     <!-- 子路由出口 -->
-    <router-view />
+      <keep-alive>
+      <router-view />
+    </keep-alive>
   <!-- /子路由出口 -->
 
     <!-- 底部导航栏 -->

@@ -7,6 +7,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
+    meta: { keepAlive: true },
     component: () => import('@/views/login')
   },
   {
@@ -17,7 +18,8 @@ const routes = [
       {
         path: '',
         name: 'home',
-        component: () => import('@/views/home') // 路由懒加载
+        component: () => import('@/views/home'), // 路由懒加载
+        meta: { keepAlive: true }
       },
       {
         path: '/video',
@@ -45,12 +47,17 @@ const routes = [
     path: '/articleDetail/:id',
     name: 'articleDetail',
     component: () => import('@/views/articleDetail'),
-    props: true
+    props: true // 这个属性可以让跳转到的组件从prop获取路由中的参数
   },
   {
     path: '/user',
     name: 'user',
-    component: () => import('@/views/user'),
+    component: () => import('@/views/user')
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: () => import('@/views/chat'),
     props: true
   }
 ]
