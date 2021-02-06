@@ -7,7 +7,6 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    meta: { keepAlive: true },
     component: () => import('@/views/login')
   },
   {

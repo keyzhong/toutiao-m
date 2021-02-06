@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list-container">
+  <div class="article-list-container" ref='articleList'>
     <van-pull-refresh
       v-model="refreshing"
       @refresh="onRefresh"
@@ -25,6 +25,7 @@
 <script type="text/ecmascript-6">
 import { getUserChannelArtiles } from '@/api/user.js'
 import ArticleItem from '@/components/articleItem.vue'
+import { throttle } from 'loadsh'
 export default {
   name: 'ArticleList',
   data () {
@@ -35,7 +36,8 @@ export default {
       loading: false,
       finished: false, // 完成加载没数据了
       refreshing: false, // 下拉刷新loading，
-      with_top: 1 // 1 包含置顶 0 不包含置顶 是否包含置顶文章
+      with_top: 1, // 1 包含置顶 0 不包含置顶 是否包含置顶文章
+      scrollTop: 0
     }
   },
   props: {
@@ -94,6 +96,24 @@ export default {
     ArticleItem
   },
   created () {
+  },
+  mounted () {
+    const articleList = this.$refs.articleList
+    articleList.addEventListener('scroll', throttle(() => {
+      this.scrollTop = articleList.scrollTop
+      console.log(this.scrollTop)
+    }, 200))
+
+    articleList.onscroll = throttle(() => {
+      this.scrollTop = articleList.scrollTop
+      console.log(this.scrollTop)
+    }, 1000)
+  },
+  activated () {
+    this.$refs.articleList.scrollTop = this.scrollTop
+  },
+  beforeDestroy () {
+    this.$refs.articleList.removeEventListener('scroll', function () {})
   }
 }
 </script>

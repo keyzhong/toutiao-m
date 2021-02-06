@@ -9,7 +9,7 @@
       @click-right="onClickRight"
     /> -->
     <!-- 子路由出口 -->
-      <keep-alive>
+      <keep-alive >
       <router-view />
     </keep-alive>
   <!-- /子路由出口 -->
@@ -26,6 +26,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { mapMutations } from 'vuex'
 export default {
   name: 'LayoutIndex',
   data () {
@@ -37,14 +38,16 @@ export default {
 
   },
   methods: {
-    onClickLeft () {},
-    onClickRight () {}
+    ...mapMutations(['addCachePage'])
   },
   computed: {
 
   },
   components: {
 
+  },
+  mounted () {
+    this.addCachePage('LayoutIndex')
   }
 }
 </script>

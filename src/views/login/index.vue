@@ -62,6 +62,7 @@
 
 <script type="text/ecmascript-6">
 import { login } from '@/api/user.js'
+import { mapMutations } from 'vuex'
 // import { Toast } from 'vant'
 export default {
   data () {
@@ -89,6 +90,7 @@ export default {
 
   },
   methods: {
+    ...mapMutations(['removeCachePage']),
     async loginFn () {
       this.$toast.loading({ // 这样写不用单独引入toast 即不用import
         message: '登录中',
@@ -105,8 +107,10 @@ export default {
         console.log(res)
         // Toast.success('登录成功')
         this.$toast.success('登录成功')
-        this.$router.push('/')
+        this.$router.back() // 登录成功跳回原来页面
         this.$store.commit('setUser', { name: 'key', age: 20 }) // 将用户信息存到vuex中
+        // 在这里清除layout的缓存 为了获取这个用户对应的数据
+        this.removeCachePage('layout')
       } catch (err) {
         this.$toast.success('登录失败')
         this.$router.push('/')

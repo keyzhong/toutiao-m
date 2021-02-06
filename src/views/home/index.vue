@@ -60,6 +60,7 @@ import { mapState } from 'vuex'
 import ArticleList from './components/articleList'
 import ChannelEdit from './components/channelEdit'
 export default {
+  name: 'HomeIndex',
   data () {
     return {
       active: 0,
