@@ -1,22 +1,22 @@
 <template>
   <div class="comment-list">
-      <!-- 组件滚动到底部时，会触发 load 事件并将 loading 设置成 true。
+    <!-- 组件滚动到底部时，会触发 load 事件并将 loading 设置成 true。
       此时可以发起异步操作并更新数据，数据更新完毕后，将 loading 设置成 false 即可。
       若数据已全部加载完毕，则直接将 finished 设置成 true 即可 -->
-      <van-cell title="全部评论" :border="false"></van-cell>
-      <van-list
-        v-model="loading"
-        :finished="finished"
-        finished-text="已经展示所有评论"
-        @load="onLoad"
-      >
-        <comment-item
-        v-for = '(item, index) in commentList'
-        :key='index'
-        :item='item'
-        @replay-click="$emit('replay-click',$event)"
-        ></comment-item>
-      </van-list>
+    <van-cell title="全部评论" :border="false"></van-cell>
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="已经展示所有评论"
+      @load="onLoad"
+    >
+      <comment-item
+        v-for="(item, index) in commentList"
+        :key="index"
+        :item="item"
+        @replay-click="$emit('replay-click', $event)"
+      ></comment-item>
+    </van-list>
   </div>
 </template>
 

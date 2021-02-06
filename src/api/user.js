@@ -18,7 +18,7 @@ export const login = params => {
 export const getUserInfo = params => {
   return request({
     method: 'GET',
-    url: '/api/app/v1_0/user/profile',
+    url: '/app/v1_0/user/profile',
     params
   })
 }
@@ -157,6 +157,17 @@ export const addComments = parmas => {
   return request({
     method: 'POST',
     url: '/app/v1_0/comments',
+    parmas
+  })
+}
+
+/**
+ * 上传头像
+ */
+export const updateUserAvatar = parmas => {
+  return request({
+    method: 'PATCH',
+    url: '/app/v1_0/user/profile',
     parmas
   })
 }

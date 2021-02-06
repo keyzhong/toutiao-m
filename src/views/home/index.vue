@@ -108,6 +108,7 @@ export default {
     } else { // 未登录 本地无
       this.loadChannelList()
     }
+    this.loadChannelList()
   }
 }
 </script>

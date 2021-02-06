@@ -10,7 +10,7 @@
           round
           :src="currentUser.photo" />
         <div slot='title' class='name'>{{currentUser.name}}</div>
-        <van-button size='small' round class='update-btn'>编辑资料</van-button>
+        <van-button size='small' round class='update-btn' to='/user'>编辑资料</van-button>
       </van-cell>
       <van-grid
         :column-num="4"
@@ -67,7 +67,7 @@
 
 <script type="text/ecmascript-6">
 import { mapState } from 'vuex'
-import { getUserInfo } from '@/api/user.js'
+import { getUserInfo } from '@/api/user'
 export default {
   name: 'MyIndex',
   data () {
